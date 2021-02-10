@@ -5,15 +5,10 @@
  */
 int is_palindrome(unsigned long n)
 {
-	unsigned long sum = 0, num = n;
-	int unit;
+	unsigned long sum = n % 10, num = n;
 
-	while (num)
-	{
-		unit = num % 10;
-		sum = sum * 10 + unit;
-		num /= 10;
-	}
+	while (num /= 10)
+		sum = (sum * 10) + (num % 10);
 
 	return (n == sum);
 }
