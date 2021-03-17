@@ -19,7 +19,7 @@ if size < 4:
 k = 1
 
 
-def printSolution(board):
+def print_board(board):
     """Prints solution"""
     arr = []
     global k
@@ -31,7 +31,7 @@ def printSolution(board):
     print(arr)
 
 
-def isSafe(board, row, col):
+def check_safe(board, row, col):
     """Checks if a queen can be placed on board[i][j]"""
     for i in range(col):
         if board[row][i]:
@@ -55,17 +55,17 @@ def isSafe(board, row, col):
     return True
 
 
-def solveNQUtil(board, col):
+def recursion(board, col):
     """Recursion call to solve NQueen problem"""
     if col == size:
-        printSolution(board)
+        print_board(board)
         return True
 
     res = False
     for i in range(size):
-        if isSafe(board, i, col):
+        if check_safe(board, i, col):
             board[i][col] = 1
-            res = solveNQUtil(board, col + 1) or res
+            res = recursion(board, col + 1) or res
             board[i][col] = 0
     return res
 
@@ -73,7 +73,7 @@ def solveNQUtil(board, col):
 def backtracking():
     """Backtracking"""
     board = [[0 for j in range(size)] for i in range(size)]
-    if solveNQUtil(board, 0) is False:
+    if recursion(board, 0) is False:
         return
     return
 
