@@ -1,18 +1,4 @@
 #include "search_algos.h"
-#include <unistd.h>
-
-/**
- * print_array - Prints an array
- * @array: Array to print
- * @start: Start point of the array
- * @end: End point of the array
- */
-void print_array(int *array, size_t start, size_t end)
-{
-	printf("Searching in array: ");
-	for (; start <= end; start++)
-		printf(start < end ? "%d, " : "%d\n", array[start]);
-}
 
 /**
  * binary_search_recursive - binary algorithm in recursion
@@ -25,23 +11,28 @@ void print_array(int *array, size_t start, size_t end)
  */
 int binary_search_recursive(int *array, int value, size_t start, size_t end)
 {
-	size_t mid = (start + end) / 2;
+	size_t i, mid = start + (end - start) / 2;
 
-	print_array(array, start, end);
-	if (start == end && value != array[start])
+	printf("Searching in array: ");
+	for (i = start; i <= end; ++i)
+		printf(i < end ? "%d, " : "%d\n", array[i]);
+
+	if (start == end)
 		return (-1);
 
-	if (value == array[mid])
+	if (start <= end)
 	{
-		if (mid > 0 && array[mid - 1] == value)
-			return (binary_search_recursive(array, value, start, mid));
-		else
+
+		if (array[mid] == value && array[mid - 1] != value)
 			return (mid);
+
+		if (array[mid] >= value)
+			return (binary_search_recursive(array, value, start, mid));
+
+		if (array[mid] <= value)
+			return (binary_search_recursive(array, value, mid + 1, end));
 	}
-	else if (value < array[mid])
-		return (binary_search_recursive(array, value, start, mid - 1));
-	else
-		return (binary_search_recursive(array, value, mid + 1, end));
+	return (-1);
 }
 
 /**
@@ -55,10 +46,8 @@ int binary_search_recursive(int *array, int value, size_t start, size_t end)
  */
 int advanced_binary(int *array, size_t size, int value)
 {
-	int ret = -1;
+	if (!array || size == 0)
+		return (-1);
 
-	if (array && size > 0)
-		ret = binary_search_recursive(array, value, 0, size - 1);
-
-	return (ret);
+	return (binary_search_recursive(array, value, 0, size - 1));
 }
