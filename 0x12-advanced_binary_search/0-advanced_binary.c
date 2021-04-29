@@ -22,7 +22,6 @@ int binary_search_recursive(int *array, int value, size_t start, size_t end)
 
 	if (start <= end)
 	{
-
 		if (array[mid] == value && array[mid - 1] != value)
 			return (mid);
 
