@@ -55,7 +55,7 @@ def print_words(word_list, hot_list):
 
 
 def count_words(subreddit, word_list):
-    """ counts dem keywords """
+    """ Counts words """
     hot_list = recurse(subreddit)
     if hot_list is None:
         return
