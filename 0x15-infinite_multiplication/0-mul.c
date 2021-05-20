@@ -43,9 +43,9 @@ int _len(char *str)
  * @len2: string len2
  * Return: pointer to the string allocated
  */
-char *_malloc(int len1, int len2)
+char *_malloc(int len)
 {
-	int i, len = len1 + len2;
+	int i;
 	char *result = malloc(len);
 
 	if (!result)
@@ -71,7 +71,7 @@ char *_malloc(int len1, int len2)
 char *_multiply(char *str1, char *str2, int len1, int len2)
 {
 	int i, j, carry;
-	char *result = _malloc(len1, len2);
+	char *result = _malloc(len1 + len2);
 
 	for (i = len1 - 1; i >= 0; i--)
 	{
