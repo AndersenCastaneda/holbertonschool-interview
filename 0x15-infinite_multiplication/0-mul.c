@@ -62,13 +62,13 @@ char *_malloc(int len1, int len2)
 
 /**
  * _multiply - multiplies
- * @num1: first number.
- * @num2: second number.
- * @len1: length of num1.
- * @len2: length of num2.
+ * @str1: first number.
+ * @str2: second number.
+ * @len1: length of str1.
+ * @len2: length of str2.
  * Return: result of multiplies.
  */
-char *_multiply(char *num1, char *num2, int len1, int len2)
+char *_multiply(char *str1, char *str2, int len1, int len2)
 {
 	int i, j, carry;
 	char *result = _malloc(len1, len2);
@@ -78,7 +78,7 @@ char *_multiply(char *num1, char *num2, int len1, int len2)
 		carry = 0;
 		for (j = len2 - 1; j >= 0; j--)
 		{
-			carry += (num1[i] - '0') * (num2[j] - '0');
+			carry += (str1[i] - '0') * (str2[j] - '0');
 			carry += result[i + j + 1] - '0';
 			result[i + j + 1] = (carry % 10) + '0';
 			carry /= 10;
@@ -118,11 +118,7 @@ int main(int argc, char *argv[])
 	}
 
 	result = _multiply(argv[1], argv[2], len1, len2);
-
-	if (result[0] == '0')
-		_print_line(result + 1);
-	else
-		_print_line(result);
+	_print_line(result[0] == '0' ? result + 1 : result);
 
 	free(result);
 	return (0);
