@@ -1,15 +1,17 @@
 #include "holberton.h"
 
 /**
- * _print - print a string
+ * _print_line - print a string
  * @str: string to print
  */
-void _print(char *str)
+void _print_line(char *str)
 {
 	int i;
 
 	for (i = 0; str[i]; ++i)
 		_putchar(str[i]);
+
+	_putchar('\n');
 }
 
 /**
@@ -25,7 +27,7 @@ int _len(char *str)
 	{
 		if (str[i] < '0' || str[i] > '9')
 		{
-			_print("Error\n");
+			_print_line("Error");
 			exit(98);
 		}
 
@@ -48,7 +50,7 @@ char *_malloc(int len1, int len2)
 
 	if (!result)
 	{
-		_print("Error\n");
+		_print_line("Error");
 		exit(98);
 	}
 
@@ -102,7 +104,7 @@ int main(int argc, char *argv[])
 
 	if (argc != 3)
 	{
-		_print("Error\n");
+		_print_line("Error");
 		exit(98);
 	}
 
@@ -111,16 +113,16 @@ int main(int argc, char *argv[])
 
 	if (argv[1][0] == '0' || argv[2][0] == '0')
 	{
-		_print("0\n");
+		_print_line("0");
 		return (0);
 	}
 
 	result = _multiply(argv[1], argv[2], len1, len2);
 
 	if (result[0] == '0')
-		_print(result + 1);
+		_print_line(result + 1);
 	else
-		_print(result);
+		_print_line(result);
 
 	free(result);
 	return (0);
