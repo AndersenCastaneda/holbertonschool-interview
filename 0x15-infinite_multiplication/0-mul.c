@@ -106,14 +106,14 @@ int main(int argc, char *argv[])
 		exit(98);
 	}
 
+	len1 = _len(argv[1]);
+	len2 = _len(argv[2]);
+
 	if (argv[1][0] == '0' || argv[2][0] == '0')
 	{
 		_print("0\n");
 		return (0);
 	}
-
-	len1 = _len(argv[1]);
-	len2 = _len(argv[2]);
 
 	result = _multiply(argv[1], argv[2], len1, len2);
 
