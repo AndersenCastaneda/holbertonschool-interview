@@ -39,8 +39,7 @@ int _len(char *str)
 
 /**
  * _malloc - allocate a string
- * @len1: string len1
- * @len2: string len2
+ * @len: string length
  * Return: pointer to the string allocated
  */
 char *_malloc(int len)
