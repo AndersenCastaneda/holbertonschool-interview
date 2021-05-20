@@ -10,8 +10,6 @@ void _print(char *str)
 
 	for (i = 0; str[i]; ++i)
 		_putchar(str[i]);
-
-	_putchar('\n');
 }
 
 /**
@@ -104,8 +102,14 @@ int main(int argc, char *argv[])
 
 	if (argc != 3)
 	{
-		_print("Error");
+		_print("Error\n");
 		exit(98);
+	}
+
+	if (argv[1][0] == '0' || argv[2][0] == '0')
+	{
+		_print("0\n");
+		return (0);
 	}
 
 	len1 = _len(argv[1]);
